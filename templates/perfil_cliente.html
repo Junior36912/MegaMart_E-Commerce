@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Cliente</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .profile-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-form label, .profile-form input, .profile-form button {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .profile-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .profile-form button:hover {
+            background-color: #218838;
+        }
+        .logout-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background-color: darkred;
+        }
+        .logo {
+            width: 150px;
+            max-width: 100%; /* Impede que a imagem ultrapasse o contêiner */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* Centraliza a logo e ajusta o espaçamento inferior */
+        }
+        .botao-voltar {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            margin-left: 5px;
+        }
+        
+        .botao-voltar img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <a href="/" class="botao-voltar">
+            <img src="https://github.com/Junior36912/imagens/blob/main/seta-esquerda.png?raw=true" alt="Seta para voltar"> Voltar</a>
+
+        <a href="/"><img src="https://github.com/Junior36912/imagens/blob/main/imagem-logo.jpg?raw=true" alt="Logo da Empresa" class="logo"></a>
+        <h2>Perfil do Cliente</h2>
+        <form action="/atualizar_cliente" method="POST" class="profile-form">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" value="{{ cliente[0] }}" readonly>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ cliente[1] }}" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" value="{{ cliente[2] }}" required>
+
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" name="cidade" value="{{ cliente[3] }}" required>
+
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" name="bairro" value="{{ cliente[4] }}" required>
+
+            <label for="rua">Rua</label>
+            <input type="text" id="rua" name="rua" value="{{ cliente[5] }}" required>
+
+            <label for="numero_casa">Número da Casa</label>
+            <input type="text" id="numero_casa" name="numero_casa" value="{{ cliente[6] }}" required>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <form action="/logout_cliente" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+</body>
+</html>

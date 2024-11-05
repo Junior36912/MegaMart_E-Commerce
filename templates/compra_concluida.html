@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+
+        h1 {
+            color: #28a745;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .compra-info {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .compra-info p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .compra-info strong {
+            font-weight: bold;
+        }
+        .botao-voltar {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            
+        }
+        
+        .botao-voltar img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo da empresa -->
+        
+        <div class="message-box">
+            <a href="/" class="botao-voltar">
+                <img src="https://github.com/Junior36912/imagens/blob/main/seta-esquerda.png?raw=true" alt="Seta para voltar"> Voltar</a>
+    
+    
+            <a href="/"><img src="https://github.com/Junior36912/imagens/blob/main/logo_comprida_1.jpg?raw=true" alt="Logo da Empresa" class="logo"></a>
+            <h1>Compra Confirmada!</h1>
+            <p>Obrigado por sua compra! Os detalhes da sua compra estão abaixo.</p>
+
+            <!-- Informações da compra -->
+            <div class="compra-info">
+                <h2>Itens Comprados:</h2>
+                <ul>
+                    {% for item in carrinho %}
+                    <li>{{ item.nome }} - Quantidade: {{ item.quantidade }} - Preço: R$ {{ item.preco }}</li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Total: </strong>R$ {{  "%.2f"|format(total) }}</p>
+
+                <h2>Endereço de Entrega:</h2>
+                <p><strong> - Destinatario: </strong>{{ endereco['nome'] }}</p>
+                <p><strong> - Cidade: </strong>{{ endereco['cidade'] }}</p>
+                <p><strong> - Bairro: </strong>{{ endereco['bairro'] }}</p>
+                <p><strong> - Rua: </strong>{{ endereco['rua'] }}</p>
+                <p><strong> - N° Casa: </strong>{{ endereco['numero_casa'] }}</p>
+            
+
+                <h2>Método de Pagamento:</h2>
+                <p>{{ metodo_pagamento }}</p>
+            </div>
+
+            <!-- Botão para voltar à página inicial -->
+            <a href="/" class="btn">Voltar para a Página Inicial</a>
+        </div>
+    </div>
+</body>
+</html>

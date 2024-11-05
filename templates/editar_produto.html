@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="text"],
+        input[type="real"],
+        input[type="int"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            margin-right: 80px;
+            margin-left: -10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Para centralizar o conteúdo dentro do container */
+        }
+        .logo {
+            width: 600px; /* Ajuste conforme necessário */
+            height: auto;
+            display: block; /* Para centralizar com margin */
+            margin: 10px auto 5px auto; /* Centraliza horizontalmente */
+        }
+        .header h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+        .confirmacao {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .delete-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #dc3545;  /* Red color for delete button */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #c8233c;
+    }
+    .header {
+        position: relative;
+        padding: 20px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+      }
+  
+      .header img {
+          position: absolute;
+          left: 20px;
+      
+          top: 70px;
+          transform: translateY(-50%);
+          height: 100px;
+      }
+  
+      .header h1 {
+          margin: 0;
+          top: 20px;
+          font-size: 2rem;
+      }
+      .header-right {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .produto-img {
+        flex: 1;
+        padding-right: 50px;   
+    }
+    .produto-img img {
+        max-width: 200px; /* Ajuste o valor conforme necessário */
+        height: auto; /* Mantém a proporção da imagem */
+        display: block;
+        margin: 0 auto; /* Centraliza a imagem */
+    }    
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/catalogo_gerente"> <img src="https://github.com/Junior36912/imagens/blob/main/logo_comprida_1.jpg?raw=true" alt="Logo da Ecommerce"></a>
+        <h1>GERENTE</h1> 
+        <p></p>
+        <h2>Editar Produto</h2>
+        <p></p>
+        <div class="header-right">
+          
+        </div>
+      </header>
+    <div class="container">
+        <div class="produto-img">
+            <img src="{{ produto[7] }}" alt="{{ produto[1] }}">
+        </div>
+        <h1>Editar Produto</h1>
+        <form action="{{ url_for('rota_editar_produto', idproduto=produto[0]) }}" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="{{ produto[1] }}"><br>
+
+            <label for="preco">Preço:</label>
+            <input type="real" id="preco" name="preco" value="{{ produto[2] }}"><br>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" value="{{ produto[3] }}"><br>
+
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria" value="{{ produto[4] }}"><br>
+
+            <label for="qtd">Quantidade:</label>
+            <input type="int" id="qtd" name="qtd" value="{{ produto[5] }}"><br>
+
+            <label for="qtd">Descrição:</label>
+            <input type="text" id="desc" name="desc" value="{{ produto[6] }}"><br>
+
+            <input type="submit" value="Salvar">
+        </form>
+        <br/>
+        <a href="{{ url_for('catalogo_gerente') }}" class="back-button">VOLTAR</a>
+    </div>
+</body>
+</html>

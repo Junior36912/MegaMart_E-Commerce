@@ -1,0 +1,142 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-form label, .login-form input, .login-form button {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        /* Botão de Login Cliente */
+        .login-form button {
+            font-size: 18px;
+            background-color: #007BFF; /* Azul */
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+        /* Botão de Cadastro */
+        .btn-cadastro {
+            background-color: #28a745; /* Verde */
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+        }
+        .btn-cadastro:hover {
+            background-color: #218838;
+        }
+        /* Link de Login como Gerente */
+        .login-option a {
+            display: block;
+            background-color: #28a745; /* Verde */
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .login-option a:hover {
+            background-color: #218838;
+        }
+        /* Ajustes para a logo */
+        .logo {
+            width: 300px;
+            max-width: 100%; /* Impede que a imagem ultrapasse o contêiner */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* Centraliza a logo e ajusta o espaçamento inferior */
+        }
+        .botao-voltar {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            margin-left: 5px;
+        }
+        
+        .botao-voltar img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <a href="/" class="botao-voltar">
+            <img src="https://github.com/Junior36912/imagens/blob/main/seta-esquerda.png?raw=true" alt="Seta para voltar"> Voltar</a>
+
+        
+        <a href="/"><img src="https://github.com/Junior36912/imagens/blob/main/imagem-logo.jpg?raw=true" alt="Logo da Ecommerce" class="logo"></a>
+        
+        {% if usuario_logado %}
+            <script>
+                // Redireciona o usuário logado para a página de perfil
+                window.location.href = "/perfil_cliente";
+            </script>
+        {% else %}
+            <h2>Login do Cliente</h2>
+            <form action="/autenticar_cliente" method="POST" class="login-form">
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <button type="submit">LOGIN COMO CLIENTE</button>
+            </form>
+
+            <div class="login-option">
+                <a href="/cadastrar">CADASTRAR</a>
+            </div>
+
+            <div class="login-option">
+                <a href="/login">LOGIN COMO GERENTE</a>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

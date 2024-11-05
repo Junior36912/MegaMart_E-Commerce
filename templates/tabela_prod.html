@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENDA</title>
+</head>
+<body>
+    <div class="container">
+        <!--<img src="https://github.com/Junior36912/imagens/blob/main/imagem.png?raw=true" alt="Imagem do Logo" class="logo">-->
+        <hr>
+        <h1>VENDA</h1>
+        <hr>
+        <h1>TABELA PRODUTOS</h1>
+        <form action="{{ url_for('pesquisar_produto') }}" method="GET">
+            <label for="search_id">Pesquisar Produto pelo ID:</label>
+            <input type="text" id="search_id" name="search_id" placeholder="ID do produto">
+            <button type="submit">Pesquisar</button>
+        </form>
+        <a href="{{url_for('add_produto')}}"> CADASTRAR PRODUTO</a>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID PRODUTO</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td><center>{{ row[0] }}</center></td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>
+                            <a href="{{url_for('rota_editar_produto', idproduto=row[0])}}"> EDITAR</a><br/>
+                            <a href="{{ url_for('rota_excluir_produto', idproduto=row[0]) }}"> EXCLUIR</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="/tab_cliente">TABELA CLIENTES</a>
+            <a href="/tab_venda">TABELA VENDAS</a>
+        </div>
+        <br/>
+        <a href="/">HOME</a><br/>
+    </div>
+</body>
+</html>

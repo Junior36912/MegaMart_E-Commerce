@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENDA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .produto-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px;
+        }
+
+        .produto-img {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .produto-img img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .produto-detalhes {
+            flex: 2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .produto-detalhes h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .produto-detalhes p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .produto-preco {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .botao-comprar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .botao-comprar:hover {
+            background-color: #218838;
+        }
+
+        .back-button {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Detalhes do Produto</h1>
+
+    <div class="produto-container">
+        <div class="produto-img">
+            <img src="{{ produto[7] }}" alt="{{ produto[1] }}">
+        </div>
+
+        <div class="produto-detalhes">
+            <h2>{{ produto[1] }}</h2>
+            <p><strong>ID Produto:</strong> {{ produto[0] }}</p>
+            <p><strong>Marca:</strong> {{ produto[3] }}</p>
+            <p><strong>Categoria:</strong> {{ produto[4] }}</p>
+            <p><strong>Quantidade disponível:</strong> {{ produto[5] }}</p>
+            <p><strong>Descrição:</strong> {{ produto[6] }}</p>
+            <div class="produto-preco">R$ {{ produto[2] }}</div>
+
+            <form action="{{ url_for('finalizar_compra', idproduto=produto[0]) }}" method="POST">
+                <label for="quantidade"><strong>Quantidade desejada:</strong></label>
+                <input type="number" id="quantidade" name="quantidade" min="1" max="{{ produto[5] }}" required>
+                <p></p>
+                <button type="submit" class="botao-comprar">Finalizar Compra</button>
+            </form>
+
+            <a href="{{ url_for('raiz_produtos') }}" class="back-button">VOLTAR</a>
+        </div>
+    </div>
+
+</body>
+</html>

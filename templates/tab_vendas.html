@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Vendas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tabela de Vendas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data da Compra</th>
+                    <th>Nome do Cliente</th>
+                    <th>Endereço</th>
+                    <th>Método de Pagamento</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venda in vendas %}
+                <tr>
+                    <td>{{ venda['id'] }}</td>
+                    <td>{{ venda['data_compra'] }}</td>
+                    <td>{{ venda['nome_cliente'] }}</td>
+                    <td>{{ venda['endereco'] }}</td>
+                    <td>{{ venda['metodo_pagamento'] }}</td>
+                    <td>{{ venda['produto'] }}</td>
+                    <td>{{ venda['valor'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

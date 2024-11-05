@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas Registradas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: relative;
+            padding: 55px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        .header img {
+            position: absolute;
+            left: 20px;
+            top: 70px;
+            transform: translateY(-50%);
+            height: 100px;
+        }
+
+        .header h1 {
+            margin: 0;
+            top: 20px;
+            font-size: 2rem;
+        }
+
+        .header h2 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* Centralizando a tabela e separando das laterais */
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table thead th {
+            padding: 15px;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto; /* Centraliza o botão */
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838;
+        }
+
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            background-color: #0067cc;
+        }
+
+        .carrinho-btn {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilo do botão de sair em vermelho */
+        .btn-sair {
+            padding: 10px 20px;
+            background-color: #c40000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-sair:hover {
+            background-color: #a30000;
+        }
+        .botao-voltar {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            margin-left: 210px;
+        }
+        
+        .botao-voltar img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="/catalogo_gerente"> 
+            <img src="https://github.com/Junior36912/imagens/blob/main/logo_comprida_1.jpg?raw=true" alt="Logo da Ecommerce">
+        </a>
+        <h1>Vendas Registradas</h1>
+        <div class="header-right">
+            <a href="/catalogo_gerente" class="login-btn">Bem-vindo, Gerente {{ session['usuario_logado'] }}</a>
+            <a href="/logout" class="btn-sair">SAIR</a>
+        </div>
+    </header>
+
+    <table>
+        <a href="/catalogo_gerente" class="botao-voltar">
+            <img src="https://github.com/Junior36912/imagens/blob/main/seta-esquerda.png?raw=true" alt="Seta para voltar"> Voltar</a>
+        <thead>
+            <tr>
+                <th>ID Venda</th>
+                <th>Data da Venda</th>
+                <th>Valor Total</th>
+                <th>Nome do Cliente</th>
+                <th>Produto</th>
+                <th>Endereço de Entrega</th>
+                <th>Forma de Pagamento</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venda in vendas %}
+            <tr>
+                <td>{{ venda[0] }}</td>
+                <td>{{ venda[1] }}</td>
+                <td>R${{ venda[6] }}</td>
+                <td>{{venda[2]}}</td>
+                <td>{{ venda[5] }}</td>
+                <td>{{ venda[3] }}</td>
+                <td>{{ venda[4] }}</td>
+                <td>{{ venda[7] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('catalogo_gerente') }}" class="back-button">Voltar ao Catálogo</a>
+
+</body>
+</html>

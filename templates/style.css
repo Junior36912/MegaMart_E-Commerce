@@ -1,0 +1,231 @@
+/* Estilo básico do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Estilo do cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+/* Estilo da imagem no cabeçalho */
+.header img {
+    height: 50px; /* Ajuste de altura padrão */
+    margin-left: 20px;
+}
+
+/* Estilo do título no cabeçalho */
+.header h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+/* Estilo do botão de login */
+.login-btn {
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #0067cc;
+    text-decoration: underline;
+}
+
+/* Estilo do botão de carrinho */
+.carrinho-btn {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Alinha o ícone e o texto verticalmente */
+}
+
+.carrinho-btn:hover {
+    background-color: #218838;
+    text-decoration: underline;
+}
+
+.fas {
+    margin-right: 5px;
+}
+
+/* Estilo do catálogo de produtos */
+.catalogo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Estilo do cartão de produto */
+.produto-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.produto-card:hover {
+    transform: translateY(-10px);
+}
+
+.produto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Informações do produto */
+.produto-info {
+    margin-top: 10px;
+}
+
+.produto-info h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.produto-info p {
+    font-size: 16px;
+    color: #888;
+}
+
+/* Preço do produto */
+.produto-preco {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Botão de comprar */
+.botao-comprar {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.botao-comprar:hover {
+    background-color: #218838;
+}
+
+/* Estilo do formulário de pesquisa */
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #007bff;
+}
+
+.search-container form {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #218838;
+}
+
+.search-container input::placeholder {
+    color: #888;
+}
+
+/* Estilo dos botões de ordenação */
+.sort-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.sort-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.sort-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.sort-buttons select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sort-buttons select:hover {
+    background-color: #e6f0ff;
+    border-color: #0056b3;
+}
+
+/* Logo da página */
+.logo {
+    width: 300px;
+    max-width: 100%; /* Impede que a imagem ultrapasse o contêiner */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Centraliza a logo e ajusta o espaçamento inferior */
+}

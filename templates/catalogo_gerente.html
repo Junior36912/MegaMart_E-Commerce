@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Produtos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      font-family: Roboto, sans-serif;
+    }
+
+    .catalogo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+
+    .produto-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 10px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .produto-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .produto-info {
+      margin-top: 10px;
+    }
+
+    .produto-info h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .produto-info p {
+      font-size: 16px;
+      color: #888;
+    }
+
+    .produto-preco {
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .botao-comprar {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .botao-excluir {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #ff0000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .botao-comprar:hover {
+      background-color: #218838;
+    }
+    
+    .botao-excluir:hover {
+      background-color: #7f0000;
+    }
+
+    .login-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  .login-btn:hover {
+      background-color: #0067cc;
+  }
+  .carrinho-btn {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+    .header {
+      position: relative;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+    }
+
+    .header img {
+        position: absolute;
+        left: 20px;
+    
+        top: 70px;
+        transform: translateY(-50%);
+        height: 100px;
+    }
+
+    .header h1 {
+        margin: 0;
+        top: 20px;
+        font-size: 2rem;
+    }
+
+    .header-right {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .btn-sair {
+      padding: 10px 20px;
+      background-color: #c40000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s;
+  }
+
+  .btn-sair:hover {
+      background-color: #a30000;
+  }
+      footer {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      background-color: #007bff;
+    }
+
+    .search-container form {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 16px;
+    }
+
+    .search-container button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .search-container button:hover {
+      background-color: #218838;
+    }
+
+    .search-container input::placeholder {
+      color: #888;
+    }
+    .sort-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+  }
+
+  .sort-buttons button:hover {
+      background-color: #0056b3;
+  }
+
+  .sort-buttons select {
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid #007bff;
+      font-size: 16px;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .sort-buttons select:hover {
+      background-color: #e6f0ff;
+      border-color: #0056b3;
+  }
+  .sort-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+  </style>
+</head>
+<body>
+
+
+  <header class="header">
+    <a href="/catalogo_gerente"> <img src="https://github.com/Junior36912/imagens/blob/main/logo_comprida_1.jpg?raw=true" alt="Logo da Ecommerce"></a>
+    <h1>Produtos MegaMart</h1> 
+    <p></p>
+    <h2>GERENTE</h2>
+    <p></p>
+    <div class="header-right">
+      {% if session['usuario_logado'] %}
+        <a href="/ver_vendas" class="carrinho-btn"><i class="fas fa-shopping-cart"></i>. Tab Vendas</a>
+        <a href="/catalogo_gerente" class="login-btn">Bem-vindo, Gerente {{ session['usuario_logado'] }}</a>
+        <a href="/logout" class="btn-sair">SAIR</a>
+      {% else %}
+        <a href="/login_geral" class="login-btn">Entrar</a>
+      {% endif %}
+    </div>
+  </header>
+  <div class="search-container">
+    <form action="{{ url_for('pesquisar_produto_gerente') }}" method="GET">
+        <input type="text" id="search_name" name="search_name" placeholder="Digite o nome do produto">
+        <button type="submit"><i class="fas fa-search"></i> Pesquisar</button>
+    </form>
+  </div>
+
+
+  <div class="sort-buttons">
+    <form action="{{ url_for('catalogo_gerente') }}" method="GET">
+        <select name="categoria">
+            <option value="todas">Todas as Categorias</option>
+            <option value="Roupas">Roupas</option>
+            <option value="Calçados">Calçados</option>
+            <option value="Acessórios">Acessórios</option>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Eletrodomésticos">Eletrodomésticos</option>
+            <option value="Livros">Livros</option>
+            <option value="Esportes">Esportes</option>
+            <option value="Beleza">Beleza</option>
+            <option value="Móveis">Móveis</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+</div>
+
+<div class="sort-buttons">
+    <form action="{{ url_for('catalogo_gerente') }}" method="GET">
+        <input type="hidden" name="categoria" value="{{ request.args.get('categoria', 'todas') }}">
+        <button type="submit" name="sort" value="nome_asc">Nome (A-Z)</button>
+        <button type="submit" name="sort" value="nome_desc">Nome (Z-A)</button>
+        <button type="submit" name="sort" value="preco_asc">Preço (Crescente)</button>
+        <button type="submit" name="sort" value="preco_desc">Preço (Decrescente)</button>
+    </form>
+</div>
+
+
+  <div class="catalogo-container">
+    {% for produto in produtos %}
+    <div class="produto-card">
+      <img src="{{ produto[7] }}" alt="{{ produto[1] }}">
+      <div class="produto-info">
+        <h3>{{ produto[1] }}</h3>
+        <p>{{ produto[5] }}</p>
+        <div class="produto-preco">R$ {{ produto[2] }}</div>
+        <h2></h2>
+        <a href="{{url_for('rota_editar_produto', idproduto=produto[0]) }}" class="botao-comprar">Editar</a>
+        <a href="{{url_for('rota_excluir_produto', idproduto=produto[0]) }}" class="botao-excluir">Excluir</a>
+        <h1></h1>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <footer>
+    <p>© 2024 MegaMart. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

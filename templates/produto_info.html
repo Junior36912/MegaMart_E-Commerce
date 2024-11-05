@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        .produto-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px;
+        }
+        .produto-img {
+            flex: 1;
+            padding-right: 50px;
+        }
+        .produto-img img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .produto-detalhes {
+            flex: 2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .produto-detalhes h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .produto-detalhes p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .produto-preco {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .botao-comprar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .botao-comprar:hover {
+            background-color: #218838;
+        }
+        .sort-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .sort-buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .sort-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .sort-buttons select {
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #007bff;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .sort-buttons select:hover {
+            background-color: #e6f0ff;
+            border-color: #0056b3;
+        }
+
+        .header {
+            position: relative;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        .header img {
+            position: absolute;
+            left: 20px;
+        
+            top: 70px;
+            transform: translateY(-50%);
+            height: 100px;
+        }
+
+        .header h1 {
+            margin: 0;
+            top: 20px;
+            font-size: 2rem;
+        }
+
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .botao-voltar {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            position: relative; 
+            left: 20px; 
+        }
+        
+        .botao-voltar img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .login-btn:hover {
+            background-color: #0067cc; 
+        }
+        
+        .carrinho-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="/"> <img src="https://github.com/Junior36912/imagens/blob/main/logo_comprida_1.jpg?raw=true" alt="Logo da Ecommerce">
+        </a>
+        <h1>Produtos</h1> 
+        <p></p>
+        <h2>MegaMart</h2>
+        <p></p>
+        <div class="header-right">
+          {% if session['usuario_logado'] %}
+            <a href="/carrinho" class="carrinho-btn"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+            <a href="/login_geral" class="login-btn">{{ session['usuario_logado'] }}, Bem-vindo</a>
+          {% else %}
+            <a href="/login_geral" class="carrinho-btn"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+            <a href="/login_geral" class="login-btn">Entrar</a>
+          {% endif %}
+        </div>
+    </header>
+    <div class="search-container">
+        <p></p>
+    </div>
+
+
+    <a href="/" class="botao-voltar">
+        <img src="https://github.com/Junior36912/imagens/blob/main/seta-esquerda.png?raw=true" alt="Seta para voltar">
+        Voltar
+    </a>
+
+
+    <div class="produto-container">
+        <div class="produto-img">
+            <img src="{{ produto[7] }}" alt="{{ produto[1] }}">
+        </div>
+        <div class="produto-detalhes">
+            <h2>{{ produto[1] }}</h2>
+            <p><strong>Marca:</strong> {{ produto[3] }}</p>
+            <p><strong>Categoria:</strong> {{ produto[4] }}</p>
+            <p><strong>Quantidade disponível:</strong> {{ produto[5] }}</p>
+            <p>{{ produto[6] }}</p>
+            <div class="produto-preco">R$ {{ produto[2] }}</div>
+
+                        <!-- Campo de quantidade fora dos formulários -->
+            <label for="quantidade"><p><strong>Quantidade desejada:</strong></p></label>
+            <input type="number" id="quantidade" name="quantidade" min="1" max="{{ produto[5] }}" required>
+
+            <p></p>
+            
+            {% if session['usuario_logado'] %}
+                <!-- Formulário para finalizar compra -->
+                <form action="{{ url_for('finalizar_compra', idproduto=produto[0]) }}" method="POST" id="form-finalizar">
+                    <input type="hidden" name="quantidade" id="quantidade-finalizar">
+                    <button type="submit" class="botao-comprar">Comprar</button>
+                </form>
+                <h1></h1>
+                <!-- Formulário para adicionar ao carrinho -->
+                <form action="{{ url_for('adicionar_carrinho', idproduto=produto[0]) }}" method="POST">
+                    <input type="hidden" name="quantidade" id="quantidade-carrinho">
+                    <button type="submit" class="botao-comprar">Adicionar ao Carrinho</button>
+                </form>
+
+                <script>
+                    // Sincronizar o valor do campo de quantidade para ambos os formulários
+                    const quantidadeInput = document.getElementById('quantidade');
+                    const quantidadeFinalizar = document.getElementById('quantidade-finalizar');
+                    const quantidadeCarrinho = document.getElementById('quantidade-carrinho');
+
+                    // Atualizar ambos os inputs hidden sempre que o campo de quantidade for alterado
+                    quantidadeInput.addEventListener('input', function() {
+                        quantidadeFinalizar.value = quantidadeInput.value;
+                        quantidadeCarrinho.value = quantidadeInput.value;
+                    });
+
+                    // Inicializar os campos hidden com o valor inicial
+                    quantidadeFinalizar.value = quantidadeInput.value;
+                    quantidadeCarrinho.value = quantidadeInput.value;
+                </script>
+
+            {% else %}
+                <!-- Caso o usuário não esteja logado, redireciona para login -->
+                <form action="/login_geral" id="form-finalizar">
+                    <button type="submit" class="botao-comprar">Comprar</button>
+                </form>
+
+                <p></p>
+                
+                <form action="/login_geral">
+                    <button type="submit" class="botao-comprar">Adicionar ao Carrinho</button>
+                </form>
+            {% endif %}
+            
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 MegaMart. Todos os direitos reservados.</p>
+        <p><a href="/sobre">Sobre nós</a></p>
+    </footer>
+
+</body>
+</html>

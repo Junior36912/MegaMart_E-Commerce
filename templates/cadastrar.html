@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .register-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .register-form label, .register-form input, .register-form button {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .register-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .register-form button:hover {
+            background-color: #0056b3;
+        }
+        .login-option {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo {
+            width: 300px;
+            max-width: 100%; /* Impede que a imagem ultrapasse o contêiner */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* Centraliza a logo e ajusta o espaçamento inferior */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastrar Novo Cliente</h2>
+        <img src="https://github.com/Junior36912/imagens/blob/main/imagem-logo.jpg?raw=true" alt="Logo da Ecommerce" class="logo">
+        <form action="/processar_cadastro" method="POST" class="register-form">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+        
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+        
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" required>
+        
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" name="cidade" required>
+        
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" name="bairro" required>
+        
+            <label for="rua">Rua</label>
+            <input type="text" id="rua" name="rua" required>
+        
+            <label for="numero_casa">Número da Casa</label>
+            <input type="text" id="numero_casa" name="numero_casa" required>
+        
+            <button type="submit">Cadastrar</button>
+        </form>
+        
+
+        <div class="login-option">
+            <a href="/login_geral">Voltar para Login</a>
+        </div>
+    </div>
+</body>
+</html>

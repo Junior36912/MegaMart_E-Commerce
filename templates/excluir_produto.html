@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmar Exclusão</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Inherited styles from your main.css or similar */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .delete-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .delete-message {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .delete-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #dc3545; /* Red */
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .delete-button:hover {
+      background-color: #c0293a;
+    }
+    .cancel-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ddd;
+      color: #000;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    .cancel-button:hover {
+      background-color: #ccc;
+    }
+    .logo {
+      width: 300px;
+      max-width: 100%; /* Impede que a imagem ultrapasse o contêiner */
+      height: auto;
+      display: block;
+      margin: 0 auto 20px; /* Centraliza a logo e ajusta o espaçamento inferior */
+  }
+  .produto-imagem {
+    width: 250px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  .produto-nome {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  </style>
+</head>
+<body>
+  <div class="delete-container">
+    <a href="/"><img src="https://github.com/Junior36912/imagens/blob/main/imagem-logo.jpg?raw=true" alt="Logo da Ecommerce" class="logo"></a>
+    
+    <h1>EXCLUSÃO</h1>
+    
+    <i class="fas fa-exclamation-circle" style="font-size: 40px; color: #dc3545;"></i> <p class="delete-message">Tem certeza que deseja excluir este produto?</p>
+    <img src="{{ produto[7] }}" alt="{{ produto[1] }}" class="produto-imagem">
+    <p class="produto-nome">{{ produto[1] }}</p>
+
+    <h1></h1>
+
+    <form action="{{ url_for('rota_excluir_produto', idproduto=produto[0]) }}" method="post">
+      <button type="submit" class="delete-button">Excluir</button>
+      <a href="{{ url_for('catalogo_gerente') }}" class="cancel-button">Cancelar</a>
+    </form>
+  </div>
+</body>
+</html>
